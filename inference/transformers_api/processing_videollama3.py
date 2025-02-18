@@ -388,7 +388,7 @@ class Videollama3Qwen2Processor(ProcessorMixin):
 
         stream = ffmpeg.input(video_path, **input_kwargs)
         if fps is not None:
-            stream = ffmpeg.filter(stream, "fps", fps=fps, round="down")
+            stream = ffmpeg.filter(stream, "fps", fps=fps, round="up")
         if new_w != w or new_h != h:
             stream = ffmpeg.filter(stream, 'scale', new_w, new_h)
         stream = ffmpeg.output(stream, "pipe:", format="rawvideo", pix_fmt="rgb24", **output_kwargs)
