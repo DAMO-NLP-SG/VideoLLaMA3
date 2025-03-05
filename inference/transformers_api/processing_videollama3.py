@@ -786,7 +786,7 @@ class Videollama3Qwen2Processor(ProcessorMixin):
                 ```python
                 tokenizer = tokenizer_class(..., {"padding": "max_length"})
                 image_processor = image_processor_class(...)
-                processor(tokenizer, image_processor) # will pass max_length unless overriden by kwargs at call
+                processor(tokenizer, image_processor) # will pass max_length unless overridden by kwargs at call
                 ```
             4) defaults kwargs specified at processor level have lowest priority.
                 ```python
