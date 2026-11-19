@@ -306,7 +306,9 @@ def run_inference(args):
 
     answer_file = args.answer_file.replace('.json', f'_{args.num_chunks}_{args.chunk_idx}.json')
 
-    os.makedirs(os.path.dirname(answer_file), exist_ok=True)
+    output_dir = os.path.dirname(answer_file)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
     ans_file = open(answer_file, "w")
 
     val_loader = build_mlvu_eval(args, processor['video'])

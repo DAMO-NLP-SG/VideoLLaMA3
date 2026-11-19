@@ -76,7 +76,9 @@ def run_inference(args):
     gt_questions = get_chunk(gt_questions, args.num_chunks, args.chunk_idx)
 
     answer_file = os.path.join(args.output_file)
-    os.makedirs(os.path.dirname(args.output_file), exist_ok=True)
+    output_dir = os.path.dirname(args.output_file)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
     ans_file = open(answer_file, "w")
 
     assert args.batch_size == 1, "Batch size must be 1 for inference"

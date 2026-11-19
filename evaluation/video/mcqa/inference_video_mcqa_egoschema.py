@@ -105,7 +105,9 @@ def run_inference(args):
     model, processor, tokenizer = model_init(args.model_path)
 
     answer_file = args.answer_file.replace('.json', f'_{args.num_chunks}_{args.chunk_idx}.json')
-    os.makedirs(os.path.dirname(answer_file), exist_ok=True)
+    output_dir = os.path.dirname(answer_file)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
     ans_file = open(answer_file, "w")
 
     questions = json.load(open(args.question_file, "r"))

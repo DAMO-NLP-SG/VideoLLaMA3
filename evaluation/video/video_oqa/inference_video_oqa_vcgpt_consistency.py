@@ -90,7 +90,9 @@ def run_inference(args):
     dataloader = DataLoader(dataset, shuffle=False, batch_size=args.batch_size, num_workers=args.num_workers, collate_fn=collate_fn)
 
     answer_file = os.path.expanduser(args.answer_file)
-    os.makedirs(os.path.dirname(answer_file), exist_ok=True)
+    output_dir = os.path.dirname(answer_file)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
     ans_file = open(answer_file, "w")
 
     output_list = []  # List to store the output results
