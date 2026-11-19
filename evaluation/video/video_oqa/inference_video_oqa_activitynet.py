@@ -98,7 +98,9 @@ def run_inference(args):
     dataloader = DataLoader(dataset, shuffle=False, batch_size=args.batch_size, num_workers=args.num_workers, collate_fn=collate_fn)
 
     answer_file = os.path.join(args.output_file)
-    os.makedirs(os.path.dirname(args.output_file), exist_ok=True)
+    output_dir = os.path.dirname(args.output_file)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
     ans_file = open(answer_file, "w")
 
     # Iterate over each sample in the ground truth file
